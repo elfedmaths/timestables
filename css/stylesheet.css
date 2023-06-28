@@ -1,0 +1,313 @@
+/* -------------------- */
+
+:root{
+    --main-back: #ffffff;
+    --main-font: #000000;
+    --main-border: #000000;
+    --main-shadow: #00000080;
+
+    --off-back: #9999993b;
+    --off-back-hover: #99999970;
+
+    --disabled-font: #b4b4b4;
+
+    --button-back: #ffffff;
+    --button-border: #000000;
+    --button-hover: #cfcfcf;
+
+    --menu-line: #000000;
+
+    --scroll-back: #ffffff;
+    --scroll-main: #ececec;
+    --scroll-hover: #cfcfcf;
+
+    --font-success: #00ff00;
+    --font-fail: #ff0000;
+
+}
+
+/* -------------------- */
+
+/* Main Structure */
+
+*{
+    box-sizing: border-box;
+    cursor: context-menu;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--main-back);
+    color: var(--main-font);
+    font-size: 12px;
+}
+
+#footer{
+    font-size: 12px;
+    text-align: left;
+    padding-left: 10px;
+    cursor: context-menu;
+    position: fixed;
+    bottom: 5px;
+}
+
+.hidden{
+    display: none !important;
+}
+
+/* -------------------- */
+
+/* Scroll Bar */
+
+::-webkit-scrollbar-track{
+	background-color: var(--scroll-back);
+}
+
+::-webkit-scrollbar{
+	width: 10px;
+    height: 10px;
+	background-color: var(--scroll-back);
+}
+
+::-webkit-scrollbar-thumb{
+	background-color: var(--scroll-main);
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+  background-color: var(--scroll-hover);
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:horizontal:hover {
+  background-color: var(--scroll-hover);
+  cursor: pointer;
+}
+
+/* -------------------- */
+
+/* Header */
+
+#header {
+    width: 100vw;
+}
+
+#header h1{
+    margin: 15px auto;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: context-menu;
+    color: var(--main-font);
+}
+
+#header h1 a{
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--main-font);
+}
+
+#header h1:before, #header h1:after {
+    content: "";
+    display: inline-block;
+    width: 10%;
+    margin: 0 .5em 0 -55%;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--main-font);
+}
+
+#header h1:after {
+    margin: 0 -55% 0 .5em;
+}
+
+/* -------------------- */
+
+/* Content */
+
+#main{
+    width: 100%;
+    height: calc(100% - 120px);
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+#main .container.timer{
+    flex: 1 1;
+}
+
+#main .container.question{
+    flex: 3 3;
+}
+
+#main .container.number{
+    flex: 1 1;
+}
+
+#main .container.input{
+    flex: 3 3;
+}
+
+/* -------------------- */
+
+/* Buttons */
+
+#number-input{
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+#number-input .number-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+#number-input .number-row .number-btn{
+    width: 25%;
+    max-width: 100px;
+    border: 3px solid #000;
+    border-style: outset;
+    padding: 10px;
+}
+
+#number-input .number-row .number-btn.clicked{
+    border-style: inset;
+}
+
+/* -------------------- */
+
+/* Question */
+
+#question{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+#number{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+/* -------------------- */
+
+/* Clock */
+
+#timer{
+    font-size: 30px;
+    margin: 20px auto;
+    cursor: default;
+}
+
+#timer:before, #timer:after {
+    content: "";
+    display: inline-block;
+    width: 10%;
+    margin: 0 .5em 0 -55%;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--main-font);
+}
+
+#timer:after {
+    margin: 0 -55% 0 .5em;
+}
+
+/* -------------------- */
+
+/* Corner Button */
+
+.corner-menu {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}
+
+.corner-menu .corner-btn{
+    flex: 0 0;
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    border-radius: 10px;
+    background-color: var(--main-back);
+    box-shadow: 0 1px 5px var(--main-shadow);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.corner-menu .corner-btn img{
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* -------------------- */
+
+/* Color Settings */
+
+#color-picker-container{    
+    display: none;
+    position: absolute;
+    bottom: 55px;
+}
+
+#color-picker-container.show{
+    display: block;
+} 
+
+#color-picker-container input{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    border: 0;
+    background-color: var(--main-back);
+    box-shadow: 0 1px 5px var(--main-shadow);
+    cursor: pointer;
+}
+
+/* -------------------- */
+
+/* Animations */
+
+.rotate-btn:hover img{
+    animation: rotate 2s linear infinite;
+}
+
+.pulse-btn:hover img{
+    animation: pulse 2s linear infinite;
+}
+
+/* -------------------- */
+
+/* Keyframes */
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}

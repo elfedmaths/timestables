@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Practice</title>
+	<meta name="author" content="M. Massey">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./css/resetstyle.css">
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <script src="./js/calc.maths.js"></script>
+    <script src="./js/function.math.js"></script>
+    <script src="./js/function.textfit.min.js"></script>
+    <script src="./js/function.main.js" defer></script>
+    <script src="./js/function.format.js" defer></script>
+    <script src="./js/time.timer.js" defer></script>
+	<meta name="description" content="Maths practice resource">
+</head>
+<body>
+    <div id="header">
+        <h1><a href="./">Maths Practice</a></h1>
+    </div>
+    <div id="main">
+        <div class="container timer">
+            <p id="timer">00:00</p>
+        </div>
+        <div class="container question">
+            <div id="question"><span id="int-1"></span> x <span id="int-2"></span></div>
+        </div>
+        <div class="container number">
+            <div id="number"></div>
+        </div>
+        <div class="container input">       
+            <div id="number-input">
+                <div class="number-row">
+                    <div class="number-btn" data-value="1">1</div>
+                    <div class="number-btn" data-value="2">2</div>
+                    <div class="number-btn" data-value="3">3</div>
+                </div>
+                <div class="number-row">
+                    <div class="number-btn" data-value="4">4</div>
+                    <div class="number-btn" data-value="5">5</div>
+                    <div class="number-btn" data-value="6">6</div>
+                </div>
+                <div class="number-row">
+                    <div class="number-btn" data-value="7">7</div>
+                    <div class="number-btn" data-value="8">8</div>
+                    <div class="number-btn" data-value="9">9</div>
+                </div>
+                <div class="number-row">
+                    <div class="number-btn" data-value="B">&#10006;</div>
+                    <div class="number-btn" data-value="0">0</div>
+                    <div class="number-btn" data-value="E">&#10004;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="corner-menu">
+        <div class="corner-btn rotate-btn" id="format-btn">
+            <img src="./img/color-icon.svg" alt="Color">
+            <div id="color-picker-container">
+                <input type="color" id="color-picker" name="color-picker" value="#ffffff">
+            </div>
+        </div>
+        <div class="corner-btn pulse-btn" id="home-btn">
+            <a href="https://elfedmaths.co.uk"><img src="./img/home-icon.svg" alt="Home"></a>
+        </div>
+    </div>
+    <div id="footer">
+        <p>Copyright &copy; 2022 -  <script>document.write(new Date().getFullYear())</script>, M. Massey.</p>
+    </div>
+</body>
+</html>
+<script>
+localStorage.clear();
+</script>
