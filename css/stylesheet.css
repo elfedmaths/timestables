@@ -104,12 +104,6 @@ body{
     color: var(--main-font);
 }
 
-#header h1 a{
-    text-decoration: none;
-    cursor: pointer;
-    color: var(--main-font);
-}
-
 #header h1:before, #header h1:after {
     content: "";
     display: inline-block;
@@ -203,11 +197,88 @@ body{
 
 /* -------------------- */
 
+/* Menu */
+
+#menu.hide{
+    display: none;
+}
+
+#menu .content{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80vw;
+    height: 80vh;
+    margin: 10vh 10vw;
+    background-color: #fff;
+    border: 5px solid #000;
+    border-style: outset;
+}
+
+#menu .background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000020;
+}
+
+#menu h1{
+    margin: 15px auto;
+    font-size: 28px;
+    text-decoration: none;
+    cursor: context-menu;
+    color: var(--main-font);
+}
+
+#menu h1:before, #menu h1:after {
+    content: "";
+    display: inline-block;
+    width: 10%;
+    margin: 0 .5em 0 -55%;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--main-font);
+}
+
+#menu h1:after {
+    margin: 0 -55% 0 .5em;
+}
+
+#menu .card {
+    display: flex;
+    margin: 10px auto;
+    box-shadow: 0 5px 10px #00000018, 0 5px 10px #00000023;
+    background-color: #ffffff;
+    padding: 20px;
+    width: 80%;
+}
+
+#menu .card .option-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    width: 100%;
+}
+
+#menu .card .option-container.flex-column {
+    flex-direction: column;
+    gap: 20px;
+}
+  
+#menu .card .option-text p {
+    color: #00000080;
+    font-size: 18px;
+    padding: 2px;
+}
+  
+/* -------------------- */
+
 /* Clock */
 
 #timer{
-    font-size: 30px;
-    margin: 20px auto;
+    font-size: 28px;
+    margin: 16px auto;
     cursor: default;
 }
 
@@ -221,6 +292,29 @@ body{
 }
 
 #timer:after {
+    margin: 0 -55% 0 .5em;
+}
+
+/* -------------------- */
+
+/* Score */
+
+#score{
+    font-size: 24px;
+    margin: 10px auto;
+    cursor: default;
+}
+
+#score:before, #score:after {
+    content: "";
+    display: inline-block;
+    width: 10%;
+    margin: 0 .5em 0 -55%;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--main-font);
+}
+
+#score:after {
     margin: 0 -55% 0 .5em;
 }
 

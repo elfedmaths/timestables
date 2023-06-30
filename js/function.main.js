@@ -1,76 +1,140 @@
-var buttons = document.querySelectorAll('.number-btn');
-var number = document.getElementById('number');
+let active = false,
+    timed = false,
+    score = 0,      
+    targetScore = 0,
+    time = 0,
+    targetTime = 0,
+    timesTables = [],
+    answer;
 
-window.addEventListener('load', function(){
-    newQuestion();
+var timer = document.querySelector('#timer'),
+    numberBtns = document.querySelectorAll('.number-btn'),
+    numberValue = document.querySelector('#number'),
+    menuContainer = document.querySelector('#menu'),
+    submitOpt = document.querySelector('#submit-option');
+    scoreContainer = document.querySelector('#score');
+
+submitOpt.addEventListener('click', function(){
+    setTimetable();
+    var timedOpt = document.querySelector('input[name="timed"]:checked')
+    if(timedOpt.value == 'yes'){
+        timedGame();
+    }else{
+        scoredGame();
+    }
+    active = true;
+    menuContainer.classList.add('hide');
 });
 
+function timedGame(){
+    var timerOpt = document.querySelector('input[name="timer"]:checked')
+    targetTime = timerOpt.value;
+    startTimer(targetTime);
+    newQuestion();
+};
+
+function scoredGame(){
+    var countOpt = document.querySelector('input[name="count"]:checked')
+    targetScore = countOpt.value;
+    startStopwatch();
+    newQuestion();
+};
+
 document.addEventListener('keydown', (event) => {
-    var key = event.key;
-    if(/([0-9]{1})/.test(key)){
-        appendNumber(key);
-    }else if(key == 'Backspace'){
-        deleteNumber();
-    }else if(key == 'Enter'){
-        enterNumber();
+    if(active){
+        var key = event.key;
+        if(/(^[0-9]$)/.test(key)){
+            appendNumber(key);
+        }else if(key == 'Backspace'){
+            deleteNumber();
+        }else if(key == 'Enter'){
+            enterNumber();
+        }
+        var buttonClicked = document.querySelector('[data-value="' + key.substring(0,1) + '"]');
+        if(buttonClicked){
+            buttonClicked.classList.add('clicked');
+            setTimeout(function(){
+                buttonClicked.classList.remove('clicked');
+            }, 200);
+        }
     }
 }, false);
 
-buttons.forEach(button => {
-    button.addEventListener('click', function(){
-        button.classList.add('clicked');
-        setTimeout(function(){
-            button.classList.remove('clicked');
-        }, 200);
-        var value = button.getAttribute('data-value');
-        switch (value) {
-            case 'E':
-                enterNumber();
-                break;
-            case 'B':
-                deleteNumber();
-                break;
-            default:
-                appendNumber(value);
-                break;
+numberBtns.forEach(numberBtn => {
+    numberBtn.addEventListener('click', function(){
+        if(active){
+            numberBtn.classList.add('clicked');
+            setTimeout(function(){
+                numberBtn.classList.remove('clicked');
+            }, 200);
+            var value = numberBtn.getAttribute('data-value');
+            switch (value) {
+                case 'E':
+                    enterNumber();
+                    break;
+                case 'B':
+                    deleteNumber();
+                    break;
+                default:
+                    appendNumber(value);
+                    break;
+            }
         }
     });
 });
 
 function appendNumber(digit){
-    var current = number.getElementsByClassName('textFitted')[0].innerHTML;
+    var current = numberValue.getElementsByClassName('textFitted')[0].innerHTML;
     current = current + digit;
     number.innerHTML = current;
-    textFit(document.getElementById('number'));
+    textFit(numberValue);
     if(checkAnswer(parseInt(current))){
-        newQuestion();
+        setTimeout(function(){
+            newQuestion();
+        }, 300);
     }
 }
 
 function deleteNumber(){
-    var current = number.getElementsByClassName('textFitted')[0].innerHTML;
+    var current = numberValue.getElementsByClassName('textFitted')[0].innerHTML;
     if(current.length > 0){
         number.innerHTML = current.slice(0, -1);
     }
-    textFit(document.getElementById('number'));
+    textFit(numberValue);
 }
 
 function enterNumber(){
-    var current = number.getElementsByClassName('textFitted')[0].innerHTML;
+    var current = numberValue.getElementsByClassName('textFitted')[0].innerHTML;
     if(checkAnswer(parseInt(current))){
         newQuestion();
     }else{
-        number.getElementsByClassName('textFitted')[0].innerHTML = "";
+        numberValue.getElementsByClassName('textFitted')[0].innerHTML = "";
     }
 }
 
 function newQuestion(){
-    var int1 = document.getElementById('int-1');
-    var int2 = document.getElementById('int-2');
-    var data = createQuestion();
-    int1.innerHTML = data[0];
-    int2.innerHTML = data[1];
-    number.getElementsByClassName('textFitted')[0].innerHTML = "";
+    var answerInt1 = document.querySelector('#int-1'),
+        answerInt2 = document.querySelector('#int-2'),
+        multiple = chooseMultiple(),
+        data = createQuestion(multiple);
+    answerInt1.innerHTML = data[0];
+    answerInt2.innerHTML = data[1];
+    numberValue.getElementsByClassName('textFitted')[0].innerHTML = "";
+    textFit(document.getElementById('question'));
+}
+
+function setTimetable(){
+    var tableOpts = document.querySelectorAll('input[name="times"]:checked');
+    tableOpts.forEach(tableOpt => timesTables.push(tableOpt.value))
+}
+
+function chooseMultiple(){
+    if(timesTables){
+        var int = randomInt(0, timesTables.length - 1);
+        return timesTables[int];
+    }else{
+        return false;
+    }
 }
 
 function createQuestion(multiple){
@@ -78,13 +142,35 @@ function createQuestion(multiple){
         var multiple = randomInt(1,12);
     }
     var integer = randomInt(1,12);
-    var answer = multiple * integer;
-    addAnswer(answer);
+    answer = multiple * integer;
     if(randomInt(1,2) == 1){
-       return [multiple, integer, answer];
+       return [multiple, integer];
     }else{
-        return [integer, multiple, answer];
+        return [integer, multiple];
     }
+}
+
+function checkAnswer(checkAnswer){
+    if(answer == checkAnswer){
+        score++;
+        scoreContainer.innerHTML = score;
+        if(timed == false && score == targetScore){
+            stopTimer();
+            stopGame();
+            return false;
+        }
+        return true;
+    }
+    return false;
+}
+
+function stopGame(){
+    var answerInt1 = document.querySelector('#int-1'),
+        answerInt2 = document.querySelector('#int-2');
+    active = false;
+    answerInt1.innerHTML = "";
+    answerInt2.innerHTML = "";
+    numberValue.getElementsByClassName('textFitted')[0].innerHTML = "";
 }
 
 function randomInt(min, max) {
@@ -100,43 +186,4 @@ function randomIntExcl(min, max, excl) {
       randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
     } while (excl.includes(randomNumber));
     return randomNumber;
-}
-
-function addAnswer(ans){
-    try {
-        localStorage["quest-ans"] = JSON.stringify([ans]);
-    } catch (e) {
-        alert("Error when writing to Local Storage\n" + e);
-    }
-}
-
-function checkAnswer(checkAnswer){
-    var ans = JSON.parse(localStorage.getItem('quest-ans'));
-    if(ans[0] === checkAnswer){
-        return true;
-    }
-    return false;
-}
-  
-function addRow(quest, ans){
-    if (localStorage.getItem("quest-data") === null) {
-        var data = [];
-    }else{
-        var data = JSON.parse(localStorage.getItem('quest-data'));
-    }
-    data.push([quest, ans]);
-    try {
-        localStorage["quest-data"] = JSON.stringify(data);
-    } catch (e) {
-        alert("Error when writing to Local Storage\n" + e);
-    }
-}
-
-function fetchData(){
-    if (localStorage.getItem("quest-data") === null) {
-        var data = [];
-    }else{
-        var data = JSON.parse(localStorage.getItem('quest-data'));
-    }
-    return data;
 }
