@@ -15,7 +15,7 @@ function startTimer(seconds){
         document.getElementById("timer").innerHTML = minutes + ":" + seconds;
         if (distance < 0) {
             stopTimer();
-            document.getElementById("timer").innerHTML = "Time Up";
+            document.getElementById("timer").innerHTML = "00:00";
             stopGame();
         }
     }, 1000);

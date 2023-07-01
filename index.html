@@ -62,135 +62,149 @@
         <div class="background"></div>
         <div class="content">
             <h1>Timestables Challenge</h1>
-            <div class="card">
-                <div class="option-container" id="timed-option-container">
-                    <div class="option-text">
-                        <p>Do you want to be timed??</p>
-                    </div>
-                    <form class="option-form">
-                        <label for="timed-yes">
+            <div class="card-container">
+                <div class="card"  id="timed-option-container">
+                    <div class="option-container">
+                        <div class="option-text">
+                            <p>Do you want to be timed??</p>
+                        </div>
+                        <form class="option-form">
                             <input type="radio" name="timed" id="timed-yes" value="yes" checked />
-                            Yes
-                        </label>
-                        <label for="timed-no">
+                            <label for="timed-yes">
+                                Yes
+                            </label>
                             <input type="radio" name="timed" id="timed-no" value="no" />
-                            No
-                        </label>              
-                    </form>
-                </div>
-            </div>
-            <div class="card">
-                <div class="option-container" id="timer-option-container">
-                    <div class="option-text">
-                        <p>How long do you want to play??</p>
+                            <label for="timed-no">
+                                No
+                            </label>              
+                        </form>
                     </div>
-                    <form class="option-form">
-                        <label for="timer-30">
+                </div>
+                <div class="card" id="timer-option-container">
+                    <div class="option-container">
+                        <div class="option-text">
+                            <p>How long do you want to play??</p>
+                        </div>
+                        <form class="option-form">
                             <input type="radio" name="timer" id="timer-30" value="30" checked />
-                            30s
-                        </label> 
-                        <label for="timer-1">
+                            <label for="timer-30">
+                                30s
+                            </label> 
                             <input type="radio" name="timer" id="timer-1" value="60" />
-                            1m
-                        </label> 
-                        <label for="timer-2">
+                            <label for="timer-1">
+                                1m
+                            </label> 
                             <input type="radio" name="timer" id="timer-2" value="120" />
-                            2m
-                        </label> 
-                        <label for="timer-5">
+                            <label for="timer-2">
+                                2m
+                            </label> 
                             <input type="radio" name="timer" id="timer-5" value="300" />
-                            5m
-                        </label> 
-                        <label for="timer-10">
+                            <label for="timer-5">
+                                5m
+                            </label> 
                             <input type="radio" name="timer" id="timer-10" value="600" />
-                            10m
-                        </label>            
-                    </form>
-                </div>
-            </div>
-            <div class="card">
-                <div class="option-container" id="count-option-container">
-                    <div class="option-text">
-                        <p>How many questions do you want??</p>
+                            <label for="timer-10">
+                                10m
+                            </label>            
+                        </form>
                     </div>
-                    <form class="option-form">
-                        <label for="count-10">
+                </div>
+                <div class="card hide" id="count-option-container">
+                    <div class="option-container">
+                        <div class="option-text">
+                            <p>How many questions do you want??</p>
+                        </div>
+                        <form class="option-form">
                             <input type="radio" name="count" id="count-10" value="10" checked />
-                            10
-                        </label>
-                        <label for="count-20">
+                            <label for="count-10">
+                                10
+                            </label>
                             <input type="radio" name="count" id="count-20" value="20" />
-                            20
-                        </label>
-                        <label for="count-50">
+                            <label for="count-20">
+                                20
+                            </label>
                             <input type="radio" name="count" id="count-50" value="50" />
-                            50
-                        </label>  
-                        <label for="count-100">
+                            <label for="count-50">
+                                50
+                            </label>  
                             <input type="radio" name="count" id="count-100" value="100" />
-                            100
-                        </label>  
-                        <label for="count-200">
+                            <label for="count-100">
+                                100
+                            </label>  
                             <input type="radio" name="count" id="count-200" value="200" />
-                            200
-                        </label>           
-                    </form>
-                </div>
-            </div>
-            <div class="card">
-                <div class="option-container flex-column" id="times-option-container">
-                    <div class="option-text">
-                        <p>What timestables do you want to practice??</p>
+                            <label for="count-200">
+                                200
+                            </label>           
+                        </form>
                     </div>
-                    <form class="option-form">
-                        <label for="times-2">
-                            <input type="checkbox" name="times" id="times-2" value="2" />
-                            2
-                        </label>      
-                        <label for="times-3">
-                            <input type="checkbox" name="times" id="times-3" value="3" />
-                            3
-                        </label>      
-                        <label for="times-4">
-                            <input type="checkbox" name="times" id="times-4" value="4" />
-                            4
-                        </label>      
-                        <label for="times-5">
-                            <input type="checkbox" name="times" id="times-5" value="5" />
-                            5
-                        </label>      
-                        <label for="times-6">
-                            <input type="checkbox" name="times" id="times-6" value="6" />
-                            6
-                        </label>      
-                        <label for="times-7">
-                            <input type="checkbox" name="times" id="times-7" value="7" />
-                            7
-                        </label>      
-                        <label for="times-8">
-                            <input type="checkbox" name="times" id="times-8" value="8" />
-                            8
-                        </label>      
-                        <label for="times-9">
-                            <input type="checkbox" name="times" id="times-9" value="9" />
-                            9
-                        </label>      
-                        <label for="times-10">
-                            <input type="checkbox" name="times" id="times-10" value="10" />
-                            10
-                        </label>      
-                        <label for="times-11">
-                            <input type="checkbox" name="times" id="times-11" value="11" />
-                            11
-                        </label>      
-                        <label for="times-12">
-                            <input type="checkbox" name="times" id="times-12" value="12" />
-                            12
-                        </label>      
-                    </form>
                 </div>
+                <div class="card" id="times-option-container">
+                    <div class="option-container flex-column">
+                        <div class="option-text">
+                            <p>What timestables do you want to practice??</p>
+                        </div>
+                        <form class="option-form">
+                            <input type="checkbox" name="times" id="times-2" value="2" />
+                            <label for="times-2">
+                                2
+                            </label>      
+                            <input type="checkbox" name="times" id="times-3" value="3" />
+                            <label for="times-3">
+                                3
+                            </label>      
+                            <input type="checkbox" name="times" id="times-4" value="4" />
+                            <label for="times-4">
+                                4
+                            </label>      
+                            <input type="checkbox" name="times" id="times-5" value="5" />
+                            <label for="times-5">
+                                5
+                            </label>      
+                            <input type="checkbox" name="times" id="times-6" value="6" />
+                            <label for="times-6">
+                                6
+                            </label>      
+                            <input type="checkbox" name="times" id="times-7" value="7" />
+                            <label for="times-7">
+                                7
+                            </label>      
+                            <input type="checkbox" name="times" id="times-8" value="8" />
+                            <label for="times-8">
+                                8
+                            </label>      
+                            <input type="checkbox" name="times" id="times-9" value="9" />
+                            <label for="times-9">
+                                9
+                            </label>      
+                            <input type="checkbox" name="times" id="times-10" value="10" />
+                            <label for="times-10">
+                                10
+                            </label>      
+                            <input type="checkbox" name="times" id="times-11" value="11" />
+                            <label for="times-11">
+                                11
+                            </label>      
+                            <input type="checkbox" name="times" id="times-12" value="12" />
+                            <label for="times-12">
+                                12
+                            </label>      
+                        </form>
+                    </div>
+                </div>
+                <button id="submit-option">Start</button>
             </div>
-            <button id="submit-option">Start</button>
+        </div>
+    </div>
+    <div id="display" class="hide">
+        <div class="background"></div>
+        <div class="content">
+            <h1>Game Over</h1>
+            <div class="text-container">
+                <p id="quest-text"></p>
+                <p>You answered <span id="quest-count"></span> questions in <span id="quest-time"></span>.</p>
+                <p>You practiced <span id="quest-times"></span></p>
+                <button id="submit-reset">Reset</button>
+            </div>
         </div>
     </div>
     <div class="corner-menu">

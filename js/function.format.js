@@ -1,6 +1,9 @@
-var formatBtn = document.getElementById('format-btn');
-var colorContainer = document.getElementById('color-picker-container');
-var colorPicker = document.getElementById('color-picker');
+var formatBtn = document.querySelector('#format-btn'),
+    colorContainer = document.querySelector('#color-picker-container'),
+    colorPicker = document.querySelector('#color-picker'),
+    timedOpts = document.querySelectorAll('input[name="timed"]'),
+    timerOptContainer = document.querySelector('#timer-option-container'),
+    scoreOptContainer = document.querySelector('#count-option-container');
 
 formatBtn.addEventListener('click', function(e){
     if(e.target.id !== 'color-picker'){
@@ -25,6 +28,22 @@ window.addEventListener('resize', function() {
     fittext();
 });
   
+timedOpts.forEach(timedOpt => {
+    timedOpt.addEventListener('click', function(){
+        switch(this.value){
+            case 'yes':
+                timerOptContainer.classList.remove('hide');
+                scoreOptContainer.classList.add('hide');
+                break;
+            case 'no':
+                timerOptContainer.classList.add('hide');
+                scoreOptContainer.classList.remove('hide');
+                break;
+            default:
+                break;
+        }
+    })
+});
 
 function fittext(){
     textFit(document.getElementById('question'));

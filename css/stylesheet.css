@@ -199,11 +199,11 @@ body{
 
 /* Menu */
 
-#menu.hide{
+#menu.hide, #display.hide{
     display: none;
 }
 
-#menu .content{
+#menu .content, #display .content{
     position: fixed;
     top: 0;
     left: 0;
@@ -211,11 +211,11 @@ body{
     height: 80vh;
     margin: 10vh 10vw;
     background-color: #fff;
-    border: 5px solid #000;
+    border: 5px solid #00000050;
     border-style: outset;
 }
 
-#menu .background{
+#menu .background, #display .background{
     position: fixed;
     top: 0;
     left: 0;
@@ -224,7 +224,7 @@ body{
     background-color: #00000020;
 }
 
-#menu h1{
+#menu h1, #display h1{
     margin: 15px auto;
     font-size: 28px;
     text-decoration: none;
@@ -232,7 +232,8 @@ body{
     color: var(--main-font);
 }
 
-#menu h1:before, #menu h1:after {
+#menu h1:before, #menu h1:after,
+#display h1:before, #display h1:after {
     content: "";
     display: inline-block;
     width: 10%;
@@ -241,8 +242,19 @@ body{
     border-bottom: 1px solid var(--main-font);
 }
 
-#menu h1:after {
+#menu h1:after, #display h1:after {
     margin: 0 -55% 0 .5em;
+}
+
+/* -------------------- */
+
+/* Menu Cards */
+
+#menu .card-container{
+    height: calc(100% - 58px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 #menu .card {
@@ -254,7 +266,13 @@ body{
     width: 80%;
 }
 
+#menu .card#count-option-container.hide, 
+#menu .card#timer-option-container.hide{
+    display: none;
+}
+
 #menu .card .option-container {
+    flex: 1 1;
     display: flex;
     justify-content: space-between;
     padding: 5px 10px;
@@ -270,6 +288,50 @@ body{
     color: #00000080;
     font-size: 18px;
     padding: 2px;
+}
+
+/* -------------------- */
+
+/* Option Form */
+
+.option-form{
+    flex: 1 1;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.option-form input{
+    display: none;
+}
+
+.option-form input[type="radio"] + label,
+.option-form input[type="checkbox"] + label{
+    color: #00000050;
+    font-size: 22px;
+}
+
+.option-form input[type="radio"]:checked + label,
+.option-form input[type="checkbox"]:checked + label{
+    color: #00000080;
+    font-weight: bold;
+}
+
+/* -------------------- */
+
+/* Button */
+
+button {
+    margin: 10px auto;
+    box-shadow: 0 5px 10px #00000018, 0 5px 10px #00000023;
+    background-color: #ffffff;
+    color: #00000080;
+    padding: 10px 20px;
+    border-style: none;
+    font-size: 24px;
+}
+
+button:hover {
+    color: #00000090;
 }
   
 /* -------------------- */
@@ -293,6 +355,21 @@ body{
 
 #timer:after {
     margin: 0 -55% 0 .5em;
+}
+
+/* -------------------- */
+
+/* Text Container */
+
+.text-container{
+    height: calc(100% - 58px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.text-container p{
+    font-size: 24px;
 }
 
 /* -------------------- */
