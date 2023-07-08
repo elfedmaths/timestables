@@ -213,6 +213,8 @@ function stopGame(){
 function resetGame(){
     menuContainer.classList.remove('hide');
     displayContainer.classList.add('hide');
+    timer.innerHTML = "00:00";
+    scoreContainer.innerHTML = "0";
     active = false,
     timed = false,
     score = 0,      
